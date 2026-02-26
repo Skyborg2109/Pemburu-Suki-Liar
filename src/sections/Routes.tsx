@@ -8,7 +8,7 @@ const routes = [
     to: 'Bandung',
     duration: '3 Jam',
     price: 'Rp 85.000',
-    image: '/dest-bandung.jpg',
+    image: `${import.meta.env.BASE_URL}dest-bandung.jpg`,
     schedule: 'Setiap Jam',
   },
   {
@@ -16,7 +16,7 @@ const routes = [
     to: 'Semarang',
     duration: '8 Jam',
     price: 'Rp 180.000',
-    image: '/dest-semarang.jpg',
+    image: `${import.meta.env.BASE_URL}dest-semarang.jpg`,
     schedule: '06:00, 14:00, 20:00',
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     to: 'Yogyakarta',
     duration: '10 Jam',
     price: 'Rp 220.000',
-    image: '/dest-jakarta.jpg',
+    image: `${import.meta.env.BASE_URL}dest-jakarta.jpg`,
     schedule: '07:00, 19:00',
   },
 ];
@@ -67,9 +67,8 @@ export default function Routes() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Header */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <div className="inline-flex items-center gap-2 bg-blue-50 rounded-full px-4 py-2 mb-4">
             <span className="w-2 h-2 bg-blue-600 rounded-full" />
@@ -79,7 +78,7 @@ export default function Routes() {
             Destinasi <span className="text-blue-600">Populer</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            Kami melayani berbagai rute perjalanan antar kota dengan jadwal yang fleksibel 
+            Kami melayani berbagai rute perjalanan antar kota dengan jadwal yang fleksibel
             dan harga yang kompetitif.
           </p>
         </div>
@@ -89,9 +88,8 @@ export default function Routes() {
           {routes.map((route, index) => (
             <div
               key={index}
-              className={`bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${(index + 1) * 150}ms` }}
             >
               {/* Image */}
@@ -162,9 +160,8 @@ export default function Routes() {
 
         {/* View All Routes */}
         <div
-          className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <button
             onClick={scrollToBooking}
@@ -172,7 +169,7 @@ export default function Routes() {
           >
             {/* Background shine effect */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            
+
             <span className="relative">Lihat Semua Rute</span>
             <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </button>

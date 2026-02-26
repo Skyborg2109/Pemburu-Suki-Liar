@@ -40,19 +40,18 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
           <div
-            className={`relative transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-            }`}
+            className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              }`}
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/bus-fleet.jpg"
+                src={`${import.meta.env.BASE_URL}bus-fleet.jpg`}
                 alt="Armada PO Bus Sinar Muda"
                 className="w-full h-[400px] lg:h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
             </div>
-            
+
             {/* Experience Badge */}
             <div className="absolute -bottom-6 -right-6 bg-blue-600 text-white rounded-2xl p-6 shadow-xl">
               <p className="text-4xl font-bold">15+</p>
@@ -63,9 +62,8 @@ export default function About() {
 
           {/* Content */}
           <div
-            className={`transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-            }`}
+            className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+              }`}
           >
             <div className="inline-flex items-center gap-2 bg-blue-50 rounded-full px-4 py-2 mb-4">
               <span className="w-2 h-2 bg-blue-600 rounded-full" />
@@ -78,14 +76,14 @@ export default function About() {
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              PO Bus Sinar Muda telah melayani perjalanan antar kota di Pulau Jawa sejak 2009. 
-              Dengan armada bus modern dan tim profesional, kami berkomitmen memberikan 
+              PO Bus Sinar Muda telah melayani perjalanan antar kota di Pulau Jawa sejak 2009.
+              Dengan armada bus modern dan tim profesional, kami berkomitmen memberikan
               pengalaman perjalanan terbaik untuk setiap penumpang.
             </p>
 
             <p className="text-gray-600 leading-relaxed mb-8">
-              Kami memahami bahwa kenyamanan dan keselamatan adalah prioritas utama. 
-              Oleh karena itu, seluruh armada kami dilengkapi dengan fasilitas terbaik 
+              Kami memahami bahwa kenyamanan dan keselamatan adalah prioritas utama.
+              Oleh karena itu, seluruh armada kami dilengkapi dengan fasilitas terbaik
               dan selalu melalui pemeliharaan rutin untuk memastikan keamanan perjalanan Anda.
             </p>
 
@@ -122,9 +120,8 @@ export default function About() {
 
         {/* Stats */}
         <div
-          className={`grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 transition-all duration-1000 delay-400 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           {stats.map((stat, index) => (
             <div

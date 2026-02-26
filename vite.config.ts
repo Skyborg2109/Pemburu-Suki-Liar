@@ -5,7 +5,7 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './',
+  base: '/Pemburu-Suki-Liar/',
   plugins: [inspectAttr(), react()],
   resolve: {
     alias: {
@@ -13,3 +13,4 @@ export default defineConfig({
     },
   },
 });
+

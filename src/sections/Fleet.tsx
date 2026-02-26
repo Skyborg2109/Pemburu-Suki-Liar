@@ -12,7 +12,7 @@ const fleetTypes = [
       { icon: Wifi, label: 'WiFi' },
     ],
     description: 'Kenyamanan premium dengan konfigurasi kursi 2-1',
-    image: '/bus-interior.jpg',
+    image: `${import.meta.env.BASE_URL}bus-interior.jpg`,
   },
   {
     name: 'Super Executive',
@@ -25,7 +25,7 @@ const fleetTypes = [
       { icon: Battery, label: 'USB Port' },
     ],
     description: 'Ekstra nyaman dengan legroom lebih luas',
-    image: '/hero-bus.jpg',
+    image: `${import.meta.env.BASE_URL}hero-bus.jpg`,
   },
   {
     name: 'Royal Class',
@@ -38,7 +38,7 @@ const fleetTypes = [
       { icon: Battery, label: 'USB Port' },
     ],
     description: 'Pengalaman first class dengan kursi 1-1',
-    image: '/bus-fleet.jpg',
+    image: `${import.meta.env.BASE_URL}bus-fleet.jpg`,
   },
 ];
 
@@ -73,9 +73,8 @@ export default function Fleet() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Header */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <div className="inline-flex items-center gap-2 bg-blue-50 rounded-full px-4 py-2 mb-4">
             <span className="w-2 h-2 bg-blue-600 rounded-full" />
@@ -85,7 +84,7 @@ export default function Fleet() {
             Pilihan <span className="text-blue-600">Kelas Bus</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            Kami menyediakan berbagai kelas bus untuk memenuhi kebutuhan perjalanan Anda, 
+            Kami menyediakan berbagai kelas bus untuk memenuhi kebutuhan perjalanan Anda,
             dari yang ekonomis hingga yang paling nyaman.
           </p>
         </div>
@@ -95,9 +94,8 @@ export default function Fleet() {
           {fleetTypes.map((fleet, index) => (
             <div
               key={index}
-              className={`group bg-gray-50 rounded-3xl overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`group bg-gray-50 rounded-3xl overflow-hidden hover:bg-white hover:shadow-2xl transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${(index + 1) * 150}ms` }}
             >
               {/* Image */}
@@ -140,9 +138,8 @@ export default function Fleet() {
 
         {/* Features Banner */}
         <div
-          className={`mt-16 bg-blue-600 rounded-3xl p-8 lg:p-12 transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`mt-16 bg-blue-600 rounded-3xl p-8 lg:p-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[

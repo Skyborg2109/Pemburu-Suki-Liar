@@ -21,7 +21,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero-bus.jpg"
+          src={`${import.meta.env.BASE_URL}hero-bus.jpg`}
           alt="PO Bus Sinar Muda"
           className="w-full h-full object-cover"
         />
