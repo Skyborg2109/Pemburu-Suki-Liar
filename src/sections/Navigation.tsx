@@ -24,17 +24,21 @@ export default function Navigation() {
   }, []);
 
   const scrollToSection = (href: string) => {
-    const id = href.replace('#', '');
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Close menu first, then scroll after a brief delay to allow DOM to update
     setIsMobileMenuOpen(false);
+    setTimeout(() => {
+      const id = href.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
     <>
       <nav
+        translate="no"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-white/95 backdrop-blur-md shadow-lg py-3'
@@ -47,6 +51,7 @@ export default function Navigation() {
             <button
               onClick={() => scrollToSection('#beranda')}
               className="flex items-center gap-2 group"
+              translate="no"
             >
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                 isScrolled ? 'bg-blue-600' : 'bg-white/20 backdrop-blur-sm'
@@ -61,14 +66,15 @@ export default function Navigation() {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link, index) => (
+            <div className="hidden lg:flex items-center gap-8" translate="no">
+              {navLinks.map((link) => (
                 <button
-                  key={index}
+                  key={link.href}
                   onClick={() => scrollToSection(link.href)}
                   className={`font-medium transition-colors hover:text-blue-500 ${
                     isScrolled ? 'text-gray-700' : 'text-white/90'
                   }`}
+                  translate="no"
                 >
                   {link.label}
                 </button>
@@ -103,40 +109,39 @@ export default function Navigation() {
       </nav>
 
       {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-      >
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-        <div
-          className={`absolute top-0 right-0 w-80 max-w-full h-full bg-white shadow-2xl transition-transform duration-300 ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
-          <div className="p-6 pt-20">
-            <div className="space-y-2">
-              {navLinks.map((link, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollToSection(link.href)}
-                  className="w-full text-left px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
-              <div className="pt-4 mt-4 border-t border-gray-100">
-                <Button
-                  onClick={() => scrollToSection('#pemesanan')}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6"
-                >
-                  Pesan Tiket
-                </Button>
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden" translate="no">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="absolute top-0 right-0 w-80 max-w-full h-full bg-white shadow-2xl">
+            <div className="p-6 pt-20">
+              <div className="space-y-2">
+                  {navLinks.map((link) => (
+                  <button
+                      key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="w-full text-left px-4 py-3 rounded-xl text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors"
+                    translate="no"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <div className="pt-4 mt-4 border-t border-gray-100">
+                  <Button
+                    onClick={() => scrollToSection('#pemesanan')}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-6"
+                    translate="no"
+                  >
+                    Pesan Tiket
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

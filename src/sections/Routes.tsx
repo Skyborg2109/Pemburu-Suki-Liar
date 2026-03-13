@@ -29,7 +29,7 @@ const routes = [
   },
 ];
 
-export default function Routes() {
+export default function RouteDestinations() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -63,6 +63,7 @@ export default function Routes() {
       id="rute"
       ref={sectionRef}
       className="py-20 lg:py-28 bg-gray-50"
+      translate="no"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Header */}
@@ -84,13 +85,14 @@ export default function Routes() {
         </div>
 
         {/* Route Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" translate="no">
           {routes.map((route, index) => (
             <div
-              key={index}
+              key={`${route.from}-${route.to}`}
               className={`bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+              translate="no"
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
@@ -162,6 +164,7 @@ export default function Routes() {
         <div
           className={`text-center mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
+          translate="no"
         >
           <button
             onClick={scrollToBooking}
