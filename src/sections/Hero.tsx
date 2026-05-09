@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Phone, MapPin, ChevronRight } from 'lucide-react';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -66,7 +68,7 @@ export default function Hero() {
             >
               <Button
                 size="lg"
-                onClick={() => scrollToSection('pemesanan')}
+                onClick={() => navigate('/booking')}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg shadow-blue-600/30 transition-all hover:scale-105"
               >
                 Pesan Tiket

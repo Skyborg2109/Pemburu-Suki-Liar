@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapPin, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const routes = [
   {
+    id: '1',
     from: 'Jakarta',
     to: 'Bandung',
     duration: '3 Jam',
@@ -12,6 +14,7 @@ const routes = [
     schedule: 'Setiap Jam',
   },
   {
+    id: '2',
     from: 'Jakarta',
     to: 'Semarang',
     duration: '8 Jam',
@@ -20,6 +23,7 @@ const routes = [
     schedule: '06:00, 14:00, 20:00',
   },
   {
+    id: '3',
     from: 'Jakarta',
     to: 'Yogyakarta',
     duration: '10 Jam',
@@ -32,6 +36,7 @@ const routes = [
 export default function RouteDestinations() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,11 +56,8 @@ export default function RouteDestinations() {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToBooking = () => {
-    const element = document.getElementById('pemesanan');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const goToBooking = (routeId?: string) => {
+    navigate(routeId ? `/booking?route=${routeId}` : '/booking');
   };
 
   return (
@@ -149,7 +151,7 @@ export default function RouteDestinations() {
                     <p className="text-xl font-bold text-blue-600">{route.price}</p>
                   </div>
                   <Button
-                    onClick={scrollToBooking}
+                    onClick={() => goToBooking(route.id)}
                     className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl"
                   >
                     Pesan
@@ -167,7 +169,7 @@ export default function RouteDestinations() {
           translate="no"
         >
           <button
-            onClick={scrollToBooking}
+            onClick={() => goToBooking()}
             className="group relative inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 text-lg font-semibold rounded-2xl shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
           >
             {/* Background shine effect */}
